@@ -28,7 +28,7 @@ class _QRScanScreenState extends State<QRScanScreen> {
   Future<void> _onDetect(BarcodeCapture capture) async {
     final List<Barcode> barcodes = capture.barcodes;
     if (barcodes.isEmpty || _isProcessing) return;
-    
+
     final String? qrData = barcodes.first.rawValue;
     if (qrData == null || qrData.isEmpty) return;
     if (_isProcessing || qrData.isEmpty) return;

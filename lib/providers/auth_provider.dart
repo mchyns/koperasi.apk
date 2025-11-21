@@ -45,7 +45,8 @@ class AuthProvider extends ChangeNotifier {
       notifyListeners();
 
       // Trigger the authentication flow
-      final GoogleSignInAccount? googleUser = await _googleSignIn.authenticate();
+      final GoogleSignInAccount? googleUser =
+          await _googleSignIn.authenticate();
 
       if (googleUser == null) {
         // User canceled the sign-in
@@ -56,11 +57,11 @@ class AuthProvider extends ChangeNotifier {
 
       // Get ID token
       final GoogleSignInAuthentication auth = googleUser.authentication;
-      
+
       // Get access token using authorization client
       final authClient = googleUser.authorizationClient;
       final clientAuth = await authClient.authorizeScopes(['email']);
-      
+
       if (clientAuth == null) {
         _errorMessage = 'Failed to get authentication tokens';
         _isLoading = false;
