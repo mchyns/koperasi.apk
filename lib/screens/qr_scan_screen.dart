@@ -14,14 +14,7 @@ class QRScanScreen extends StatefulWidget {
 }
 
 class _QRScanScreenState extends State<QRScanScreen> {
-  final MobileScannerController _controller = MobileScannerController(
-    detectionSpeed:
-        DetectionSpeed.normal, // Tidak perlu noContinuous (terlalu cepat)
-    facing: CameraFacing.back,
-    torchEnabled: false,
-    returnImage: false, // Jangan return image, lebih enteng
-    formats: [BarcodeFormat.qrCode], // Hanya QR code
-  );
+  final MobileScannerController _controller = MobileScannerController();
   bool _isProcessing = false;
   final List<String> _scannedChunks = [];
   int _expectedChunks = 0;
@@ -33,13 +26,12 @@ class _QRScanScreenState extends State<QRScanScreen> {
   }
 
   Future<void> _onDetect(BarcodeCapture capture) async {
-    if (_isProcessing) return;
-
-    final barcodes = capture.barcodes;
-    if (barcodes.isEmpty) return;
-
-    final qrData = barcodes.first.rawValue;
+    final List<Barcode> barcodes = capture.barcodes;
+    if (barcodes.isEmpty || _isProcessing) return;
+    
+    final String? qrData = barcodes.first.rawValue;
     if (qrData == null || qrData.isEmpty) return;
+    if (_isProcessing || qrData.isEmpty) return;
 
     setState(() => _isProcessing = true);
 
@@ -236,11 +228,6 @@ class _QRScanScreenState extends State<QRScanScreen> {
           MobileScanner(
             controller: _controller,
             onDetect: _onDetect,
-            scanWindow: Rect.fromCenter(
-              center: Offset(size.width / 2, size.height / 2 - 50),
-              width: scanArea,
-              height: scanArea,
-            ),
           ),
           // Custom overlay dengan scan area persegi
           CustomPaint(

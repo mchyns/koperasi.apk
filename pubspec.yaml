@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.10.0
+  sdk: ^3.5.0
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -45,23 +45,23 @@ dependencies:
   hive_flutter: ^1.1.0
   
   # Firebase - Real-time sync multi-device
-  firebase_core: ^3.6.0
-  firebase_auth: ^5.3.1
-  cloud_firestore: ^5.4.4
-  google_sign_in: ^6.2.2
+  firebase_core: ^4.0.0
+  firebase_auth: ^6.0.0
+  cloud_firestore: ^6.0.0
+  google_sign_in: ^7.0.0
   
   # QR Code untuk transfer offline
   qr_flutter: ^4.1.0
-  mobile_scanner: ^4.0.1  # Downgrade ke versi stable yang compatible dengan Firebase
+  mobile_scanner: ^6.0.2
   
   # Local Notifications with progress
-  flutter_local_notifications: ^18.0.1
+  flutter_local_notifications: ^19.0.0
   
   # UI Components
   percent_indicator: ^4.2.3
   
   # Share functionality
-  share_plus: ^10.1.2
+  share_plus: ^12.0.0
   
   # Image Picker
   image_picker: ^1.1.2
