@@ -52,7 +52,7 @@ dependencies:
   
   # QR Code untuk transfer offline
   qr_flutter: ^4.1.0
-  mobile_scanner: ^5.1.1  # Downgrade sedikit untuk compatibility dengan Firebase
+  mobile_scanner: ^4.0.1  # Downgrade ke versi stable yang compatible dengan Firebase
   
   # Local Notifications with progress
   flutter_local_notifications: ^18.0.1
